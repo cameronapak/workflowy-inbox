@@ -1,5 +1,5 @@
 import { Form, ActionPanel, Action, showToast, getPreferenceValues, openExtensionPreferences } from "@raycast/api";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import fetch from "cross-fetch";
 
 type Values = {
@@ -7,7 +7,7 @@ type Values = {
   new_bullet_note: string;
   api_key: string;
   save_location_url: string;
-}
+};
 
 interface Preferences {
   apiKey: string;
@@ -28,11 +28,13 @@ async function submitToWorkflowy(values: Values) {
       new_bullet_note: values.new_bullet_note,
       save_location_url: saveLocationUrl,
     }),
-  })
+  });
 
   const data = await response.json();
   if (!data) {
-    throw new Error("Failed to submit the bullet to Workflowy. Please check your API key and save location url and then try again.");
+    throw new Error(
+      "Failed to submit the bullet to Workflowy. Please check your API key and save location url and then try again.",
+    );
   }
 }
 
@@ -44,7 +46,7 @@ async function validateWfApiKey() {
       "Content-Type": "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
-  })
+  });
 
   const data = await response.json();
   if (!data) {
@@ -58,7 +60,7 @@ export default function Command() {
       await validateWfApiKey();
       await submitToWorkflowy(values);
       showToast({ title: "Success!", message: "Added the bullet to your Workflowy inbox." });
-    } catch (error: any) {
+    } catch (error) {
       showToast({ title: "Error", message: error?.message || error || "Could not submit form" });
     }
   }

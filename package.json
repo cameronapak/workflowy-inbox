@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "workflowy-inbox",
-  "title": "workflowy-inbox",
-  "description": "Quickly add items to your Workflowy inbox. ",
+  "title": "Workflowy Inbox",
+  "description": "Quickly add items to your Workflowy inbox.",
   "icon": "command-icon.png",
   "author": "cameron_pak",
   "categories": [
