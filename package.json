@@ -17,6 +17,26 @@
       "mode": "view"
     }
   ],
+  "preferences": [
+    {
+      "label": "Workflowy API Key",
+      "type": "password",
+      "description": "Get your Workflowy API key at https://workflowy.com/api-key/",
+      "name": "apiKey",
+      "title": "Workflowy API Key",
+      "placeholder": "Enter your Workflowy API key",
+      "required": true
+    },
+    {
+      "label": "Workflowy Save Location URL",
+      "type": "textfield",
+      "description": "Identify the bullet you want to be your inbox bullet and copy the internal link",
+      "name": "saveLocationUrl",
+      "title": "Workflowy Save Location URL",
+      "placeholder": "Enter your Workflowy save location URL",
+      "required": true
+    }
+  ],
   "dependencies": {
     "@raycast/api": "^1.68.1",
     "@raycast/utils": "^1.12.5",
