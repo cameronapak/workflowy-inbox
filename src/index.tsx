@@ -55,6 +55,7 @@ async function validateWfApiKey() {
 }
 
 export default function Command() {
+  const { saveLocationUrl } = getPreferenceValues<Preferences>();
   async function handleSubmit(values: Values) {
     try {
       await validateWfApiKey();
@@ -71,6 +72,7 @@ export default function Command() {
         <ActionPanel>
           <Action.SubmitForm onSubmit={handleSubmit} />
           <Action.OpenInBrowser title="Get Workflowy API Key" url="https://workflowy.com/api-key/" />
+          <Action.OpenInBrowser title="Open Workflowy Inbox" url={saveLocationUrl || ''} />
           <Action title="Open Extension Preferences" onAction={openExtensionPreferences} />
         </ActionPanel>
       }

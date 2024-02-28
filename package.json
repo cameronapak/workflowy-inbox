@@ -3,7 +3,7 @@
   "name": "workflowy-inbox",
   "title": "Workflowy Inbox",
   "description": "Quickly add items to your Workflowy inbox. This is an independent extension and is not created by Workflowy.",
-  "icon": "assets/workflowy-logo.png",
+  "icon": "workflowy-logo.png",
   "author": "cameron_pak",
   "categories": [
     "Productivity"
