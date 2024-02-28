@@ -1,4 +1,4 @@
-# workflowy-inbox
+# Workflowy Inbox | Raycast Extension
 
 Quickly add items to your Workflowy inbox. 
 
