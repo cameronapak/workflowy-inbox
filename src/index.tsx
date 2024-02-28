@@ -62,7 +62,7 @@ export default function Command() {
       await submitToWorkflowy(values);
       showToast({ title: "Success!", message: "Added the bullet to your Workflowy inbox." });
     } catch (error) {
-      showToast({ title: "Error", message: error?.message || error || "Could not submit form" });
+      showToast({ title: "Error", message: "Failed to submit the bullet to Workflowy. Please check your API key and save location url and then try again." });
     }
   }
 
