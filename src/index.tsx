@@ -61,8 +61,12 @@ export default function Command() {
       await validateWfApiKey();
       await submitToWorkflowy(values);
       showToast({ title: "Success!", message: "Added the bullet to your Workflowy inbox." });
-    } catch (error) {
-      showToast({ title: "Error", message: "Failed to submit the bullet to Workflowy. Please check your API key and save location url and then try again." });
+    } catch {
+      showToast({
+        title: "Error",
+        message:
+          "Failed to submit the bullet to Workflowy. Please check your API key and save location url and then try again.",
+      });
     }
   }
 
@@ -72,7 +76,7 @@ export default function Command() {
         <ActionPanel>
           <Action.SubmitForm onSubmit={handleSubmit} />
           <Action.OpenInBrowser title="Get Workflowy API Key" url="https://workflowy.com/api-key/" />
-          <Action.OpenInBrowser title="Open Workflowy Inbox" url={saveLocationUrl || ''} />
+          <Action.OpenInBrowser title="Open Workflowy Inbox" url={saveLocationUrl || ""} />
           <Action title="Open Extension Preferences" onAction={openExtensionPreferences} />
         </ActionPanel>
       }
