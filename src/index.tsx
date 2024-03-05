@@ -1,4 +1,12 @@
-import { Form, ActionPanel, Action, showToast, Toast, getPreferenceValues, openExtensionPreferences } from "@raycast/api";
+import {
+  Form,
+  ActionPanel,
+  Action,
+  showToast,
+  Toast,
+  getPreferenceValues,
+  openExtensionPreferences,
+} from "@raycast/api";
 import { useForm, FormValidation } from "@raycast/utils";
 import { v4 as uuidv4 } from "uuid";
 import fetch from "cross-fetch";
@@ -61,7 +69,11 @@ export default function Command() {
       try {
         await validateWfApiKey();
         await submitToWorkflowy(values);
-        showToast({ style: Toast.Style.Success, title: "Success!", message: "Added the bullet to your Workflowy inbox." });
+        showToast({
+          style: Toast.Style.Success,
+          title: "Success!",
+          message: "Added the bullet to your Workflowy inbox.",
+        });
         reset();
       } catch {
         showToast({
@@ -75,7 +87,7 @@ export default function Command() {
     validation: {
       new_bullet_title: FormValidation.Required,
     },
-  })
+  });
   const { saveLocationUrl } = getPreferenceValues<Preferences>();
 
   return (
@@ -83,14 +95,30 @@ export default function Command() {
       actions={
         <ActionPanel>
           <Action.SubmitForm icon={{ source: "send.svg" }} title="Send to Workflowy Inbox" onSubmit={handleSubmit} />
-          <Action.OpenInBrowser icon={{ source: "key.svg" }} title="Get Workflowy API Key" url="https://workflowy.com/api-key/" />
-          <Action.OpenInBrowser icon={{ source: "inbox.svg" }} title="Open Workflowy Inbox" url={saveLocationUrl || ""} />
-          <Action icon={{ source: "settings.svg" }} title="Open Extension Preferences" onAction={openExtensionPreferences} />
+          <Action.OpenInBrowser
+            icon={{ source: "key.svg" }}
+            title="Get Workflowy API Key"
+            url="https://workflowy.com/api-key/"
+          />
+          <Action.OpenInBrowser
+            icon={{ source: "inbox.svg" }}
+            title="Open Workflowy Inbox"
+            url={saveLocationUrl || ""}
+          />
+          <Action
+            icon={{ source: "settings.svg" }}
+            title="Open Extension Preferences"
+            onAction={openExtensionPreferences}
+          />
         </ActionPanel>
       }
     >
-      <Form.TextField title="Bullet Text" placeholder="What would you like to remember?" {...itemProps.new_bullet_title} />
-      <Form.TextArea title="Bullet Note / Comment" placeholder="Any comments?"  {...itemProps.new_bullet_note} />
+      <Form.TextField
+        title="Bullet Text"
+        placeholder="What would you like to remember?"
+        {...itemProps.new_bullet_title}
+      />
+      <Form.TextArea title="Bullet Note / Comment" placeholder="Any comments?" {...itemProps.new_bullet_note} />
     </Form>
   );
 }
