@@ -82,10 +82,10 @@ export default function Command() {
     <Form
       actions={
         <ActionPanel>
-          <Action.SubmitForm onSubmit={handleSubmit} />
-          <Action.OpenInBrowser title="Get Workflowy API Key" url="https://workflowy.com/api-key/" />
-          <Action.OpenInBrowser title="Open Workflowy Inbox" url={saveLocationUrl || ""} />
-          <Action title="Open Extension Preferences" onAction={openExtensionPreferences} />
+          <Action.SubmitForm icon={{ source: "send.svg" }} title="Send to Workflowy Inbox" onSubmit={handleSubmit} />
+          <Action.OpenInBrowser icon={{ source: "key.svg" }} title="Get Workflowy API Key" url="https://workflowy.com/api-key/" />
+          <Action.OpenInBrowser icon={{ source: "inbox.svg" }} title="Open Workflowy Inbox" url={saveLocationUrl || ""} />
+          <Action icon={{ source: "settings.svg" }} title="Open Extension Preferences" onAction={openExtensionPreferences} />
         </ActionPanel>
       }
     >
