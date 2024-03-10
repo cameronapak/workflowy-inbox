@@ -10,7 +10,6 @@ import {
   PopToRootType,
 } from "@raycast/api";
 import { setTimeout } from "timers/promises";
-import React from 'react';
 import { useForm, FormValidation } from "@raycast/utils";
 import { v4 as uuidv4 } from "uuid";
 import fetch from "cross-fetch";
