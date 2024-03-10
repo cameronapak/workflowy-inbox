@@ -7,6 +7,7 @@ import {
   getPreferenceValues,
   openExtensionPreferences,
   closeMainWindow,
+  PopToRootType,
 } from "@raycast/api";
 import { setTimeout } from "timers/promises";
 import React from 'react';
@@ -77,9 +78,6 @@ export default function Command(): React.ReactElement {
           title: "Success!",
           message: "Added the bullet to your Workflowy inbox.",
         });
-        // This allows the success message to show for a second before closing the window.
-        await setTimeout(1000);
-        await closeMainWindow();
         reset();
       } catch {
         showToast({
@@ -100,7 +98,16 @@ export default function Command(): React.ReactElement {
     <Form
       actions={
         <ActionPanel>
-          <Action.SubmitForm icon={{ source: "send.svg" }} title="Send and Close" onSubmit={handleSubmit} />
+          <Action.SubmitForm
+            icon={{ source: "send.svg" }}
+            title="Send and Close"
+            onSubmit={async (values) => {
+              await handleSubmit(values as InboxFormValues);
+              // This allows the success message to show for a second before closing the window.
+              await setTimeout(1000);
+              await closeMainWindow({ popToRootType: PopToRootType.Immediate });
+            }}
+          />
           <Action.SubmitForm icon={{ source: "send.svg" }} title="Send and Add Another" onSubmit={handleSubmit} />
           <Action.OpenInBrowser
             icon={{ source: "key.svg" }}
